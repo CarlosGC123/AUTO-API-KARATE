@@ -403,8 +403,7 @@ jobs:
 
 ## Autor
 
-Desarrollado como reto técnico para la posición de **Senior QA Automation Engineer**.  
-Certificación: **ISTQB Certified Test Automation Engineer v2.0**
+Desarrollado como reto técnico.
 
 ---
 
