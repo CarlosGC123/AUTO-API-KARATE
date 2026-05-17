@@ -1,0 +1,35 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs de ejecución
+target/logs/
+
+# Reportes Karate (generados en runtime)
+target/karate-reports/
+target/surefire-reports/
+
+# IDEs
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Karate screenshots y videos
+src/test/java/screenshots/

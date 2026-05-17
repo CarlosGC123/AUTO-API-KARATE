@@ -1,0 +1,5 @@
+{
+  "quantidade": "#number",
+  "usuarios":   "#array"
+}
+

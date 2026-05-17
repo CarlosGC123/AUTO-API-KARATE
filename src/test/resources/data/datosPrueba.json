@@ -1,0 +1,35 @@
+{
+  "_comentario": "Datos de prueba estáticos para escenarios con Scenario Outline y referencias directas.",
+
+  "usuariosValidos": [
+    {
+      "nome":          "Alice Estática QA",
+      "email":         "alice.qa.estatica@automatizacion.com",
+      "password":      "AlicePass@001",
+      "administrador": "true"
+    },
+    {
+      "nome":          "Bob Estático QA",
+      "email":         "bob.qa.estatico@automatizacion.com",
+      "password":      "BobPass@002",
+      "administrador": "false"
+    }
+  ],
+
+  "camposRequeridos": [
+    { "campo": "nome",          "mensaje": "nome não pode ficar em branco" },
+    { "campo": "email",         "mensaje": "email não pode ficar em branco" },
+    { "campo": "password",      "mensaje": "password não pode ficar em branco" },
+    { "campo": "administrador", "mensaje": "administrador deve ser 'true' ou 'false'" }
+  ],
+
+  "mensajesEsperados": {
+    "usuarioCadastrado":      "Cadastro realizado com sucesso",
+    "usuarioAtualizado":      "Registro alterado com sucesso",
+    "usuarioDeletado":        "Registro excluído com sucesso",
+    "emailJaCadastrado":      "Este email já está sendo usado",
+    "usuarioNaoEncontrado":   "Usuário não encontrado",
+    "nenhumRegistroExcluido": "Nenhum registro excluído"
+  }
+}
+
