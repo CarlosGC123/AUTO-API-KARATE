@@ -1,11 +1,4 @@
 # AUTO-API-KARATE
-## Suite de Pruebas Automatizadas — API ServeRest | Karate DSL
-
-> **Reto Técnico — Senior QA Automation Engineer**  
-> Automatización de la API de Usuarios de [ServeRest](https://serverest.dev/) con Karate DSL,  
-> aplicando principios del **ISTQB Test Automation Engineer v2.0** y el patrón **Screenplay**.
-
----
 
 ## Tabla de Contenidos
 
