@@ -1,4 +1,4 @@
-﻿# interactions/usuarios/actualizarUsuario.feature
+# interactions/usuarios/actualizarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa: INTERACTIONS
 # Responsabilidad UNICA: encapsular PUT /usuarios/{id}

@@ -1,4 +1,4 @@
-﻿# questions/verificarDatosUsuario.feature
+# questions/verificarDatosUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa: QUESTIONS (PLANA)
 # Responsabilidad: verificar que los datos de un usuario recuperado de la API

@@ -8,91 +8,64 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 
 /**
- * CorredorPruebas — Runner Unificado del Framework
+ * CucumberTestSuite — Runner Unificado del Framework
  * =============================================================================
- * Equivalente al CucumberTestSuite de Serenity BDD.
- * Runner UNICO para toda la suite: no existe ningun otro corredor.
+ * Runner UNICO para toda la suite. Equivalente al CucumberTestSuite de Serenity BDD.
  *
- * SELECCION DE TAGS (equivalente a @CucumberOptions en Serenity):
- *   -Dkarate.options="--tags @smoke"         // solo humo
- *   -Dkarate.options="--tags @regression"    // regresion completa
- *   -Dkarate.options="--tags @usuarios"      // modulo usuarios
- *   -Dkarate.options="--tags @e2e"           // solo End-to-End
- *   (sin parametro)                           // ejecuta TODOS los escenarios
+ * ENTORNO   → perfil Maven: -P dev | -P staging | -P prod
+ * TAGS      → perfil Maven: -P smoke | -P regression | -P e2e | -P usuarios
+ * COMBINADO → mvn clean verify -P dev,smoke
  *
- * SELECCION DE ENTORNO (equivalente a environments: en serenity.conf):
- *   -Dkarate.env=dev        (por defecto)
- *   -Dkarate.env=staging
- *   -Dkarate.env=prod
+ * Run Configurations en IntelliJ: .idea/runConfigurations/  (ver README.md)
  *
- * COMANDOS MAVEN COMPLETOS:
- *   mvn test                                          -> todos los features, entorno dev
- *   mvn test -P smoke                                 -> solo @smoke, entorno dev
- *   mvn test -P regression -Dkarate.env=staging       -> @regression en staging
- *   mvn test -P smoke -Dkarate.env=prod               -> @smoke en prod
- *   mvn test -Dkarate.options="--tags @e2e"           -> tag personalizado
- *   mvn test -Dthreads=8                              -> paralelo con 8 threads
- *
- * DONDE ESTAN LOS REPORTES:
- *   target/karate-reports/karate-summary.html         -> resumen general
- *   target/karate-reports/features.*.html             -> detalle por feature
- *   target/karate-reports/karate-timeline.html        -> linea de tiempo paralela
+ * REPORTES:
+ *   target/karate-reports/karate-summary.html   → resumen ejecutivo
+ *   target/karate-reports/karate-tags.html      → resumen por tags
+ *   target/karate-reports/karate-timeline.html  → ejecucion paralela
  *
  * EQUIVALENCIAS CON SERENITY BDD:
- *   karate-config.js       <->  serenity.conf / serenity.properties
- *   karate.options=--tags  <->  @CucumberOptions(tags = {...})
- *   karate-summary.html    <->  target/site/serenity/index.html
- *   @Karate.Test           <->  @RunWith(CucumberWithSerenity.class)
+ *   karate-config.js        ↔  serenity.conf / serenity.properties
+ *   @Karate.Test            ↔  @RunWith(CucumberWithSerenity.class)
+ *   karate-summary.html     ↔  target/site/serenity/index.html
+ *   -P smoke                ↔  @CucumberOptions(tags = {"@smoke"})
+ *   -P dev                  ↔  -Denvironment=dev
  * =============================================================================
  */
 @DisplayName("Suite Completa — ServeRest API Automation")
 public class CucumberTestSuite {
 
-    // ── Ciclo de vida del runner ──────────────────────────────────────────────
-
-    /**
-     * Se ejecuta UNA VEZ antes de toda la suite.
-     * Equivalente al @Before(order=0) global de Serenity.
-     */
     @BeforeAll
     static void antesDeEjecutarLaSuite() {
-        String entorno  = System.getProperty("karate.env", "dev");
-        String opciones = System.getProperty("karate.options", "(sin filtro — todos los escenarios)");
+        String entorno  = System.getProperty("karate.env",     "dev");
+        String opciones = System.getProperty("karate.options", "");
+        int    threads  = Integer.parseInt(System.getProperty("threads",
+                                  String.valueOf(ConstantesPrueba.THREADS_POR_DEFECTO)));
 
-        FormatoConsola.imprimirEncabezado("AUTO-API-KARATE — ServeRest API Automation");
+        FormatoConsola.imprimirEncabezado("ServeRest API Automation");
         FormatoConsola.imprimirResumenConfiguracion(
-                "CorredorPruebas (runner unico)",
+                "CucumberTestSuite",
                 entorno,
                 resolverUrlBase(entorno),
-                opciones,
-                Integer.parseInt(System.getProperty("threads", String.valueOf(ConstantesPrueba.THREADS_POR_DEFECTO)))
-        );
-        FormatoConsola.imprimirInfo("Reportes", "target/karate-reports/karate-summary.html");
+                opciones.isEmpty() ? "(sin filtro — todos los escenarios)" : opciones,
+                threads);
+        FormatoConsola.imprimirInfo("Features",  ConstantesPrueba.RUTA_TODAS_LAS_PRUEBAS);
+        FormatoConsola.imprimirInfo("Reporte",   "target/karate-reports/karate-summary.html");
         FormatoConsola.imprimirSeparador();
     }
 
-    /**
-     * Se ejecuta UNA VEZ despues de toda la suite.
-     * Equivalente al @AfterSuite de Serenity.
-     */
     @AfterAll
     static void despuesDeEjecutarLaSuite() {
-        FormatoConsola.imprimirCierre(
-            "Suite finalizada. Reporte completo en: target/karate-reports/karate-summary.html"
-        );
+        FormatoConsola.imprimirSeparador();
+        FormatoConsola.imprimirExito("Suite finalizada.");
+        FormatoConsola.imprimirInfo("Reporte detallado", "target/karate-reports/karate-summary.html");
+        FormatoConsola.imprimirInfo("Reporte por tags",  "target/karate-reports/karate-tags.html");
+        FormatoConsola.imprimirInfo("Timeline paralelo", "target/karate-reports/karate-timeline.html");
+        FormatoConsola.imprimirCierre("Abre los reportes en tu navegador para ver el detalle completo.");
     }
 
-    // ── Metodo de ejecucion ───────────────────────────────────────────────────
-
     /**
-     * Punto de entrada principal de la suite.
-     *
-     * Karate lee automaticamente:
-     *   - karate.env    : entorno activo (dev / staging / prod) -> karate-config.js
-     *   - karate.options: filtro de tags (--tags @smoke, --tags @regression, etc.)
-     *
-     * No es necesario modificar este metodo para cambiar entorno o tags;
-     * se controla EXCLUSIVAMENTE via parametros Maven (-D) o perfiles (-P).
+     * Punto de entrada. Karate lee automaticamente karate.env y karate.options
+     * del sistema — no modificar este metodo para cambiar entorno o tags.
      */
     @Karate.Test
     @DisplayName("Ejecutar suite con entorno y tags configurados via Maven")
@@ -101,9 +74,6 @@ public class CucumberTestSuite {
                      .relativeTo(getClass());
     }
 
-    // ── Metodos auxiliares ────────────────────────────────────────────────────
-
-    /** Resuelve la URL base segun el entorno activo para mostrarla en el log de inicio. */
     private static String resolverUrlBase(String entorno) {
         switch (entorno) {
             case "staging": return "https://serverest.dev  [staging]";
@@ -112,4 +82,3 @@ public class CucumberTestSuite {
         }
     }
 }
-

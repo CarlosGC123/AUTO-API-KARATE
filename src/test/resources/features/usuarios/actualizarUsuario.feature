@@ -1,4 +1,4 @@
-﻿# features/usuarios/actualizarUsuario.feature
+# features/usuarios/actualizarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 #

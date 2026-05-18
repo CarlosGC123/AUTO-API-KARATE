@@ -1,4 +1,4 @@
-﻿# features/usuarios/obtenerUsuarioPorId.feature
+# features/usuarios/obtenerUsuarioPorId.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 #

@@ -1,4 +1,4 @@
-﻿# features/usuarios/registrarUsuario.feature
+# features/usuarios/registrarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 #
@@ -68,7 +68,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
     * call read('classpath:tasks/usuarios/crearNuevoUsuario.feature') { datosDelNuevoUsuario: '#(datosUsuarioBase)' }
     * def idPrimerUsuario = idUsuarioCreado
 
-    * def urlAccion           = pantalla.urlRegistrarUsuario
+    * def urlAccion           = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud     = datosUsuarioBase
     * def resultadoDuplicado  = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -82,7 +82,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-005
   Scenario: [NEGATIVO] Registrar usuario con email invalido retorna 400
 
-    * def urlAccion         = pantalla.urlRegistrarUsuario
+    * def urlAccion         = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud   = fabricaDatos.usuariosInvalidos.emailConFormatoInvalido
     * def resultadoInvalido = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -95,7 +95,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-006
   Scenario: [NEGATIVO] Registrar usuario con nombre vacio retorna 400
 
-    * def urlAccion            = pantalla.urlRegistrarUsuario
+    * def urlAccion            = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud      = fabricaDatos.usuariosInvalidos.nombreVacio
     * def resultadoNombreVacio = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -108,7 +108,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-007
   Scenario: [NEGATIVO] Registrar usuario con password vacio retorna 400
 
-    * def urlAccion               = pantalla.urlRegistrarUsuario
+    * def urlAccion               = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud         = fabricaDatos.usuariosInvalidos.passwordVacio
     * def resultadoPasswordVacio  = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -121,7 +121,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-008
   Scenario: [NEGATIVO] Registrar usuario con email vacio retorna 400
 
-    * def urlAccion           = pantalla.urlRegistrarUsuario
+    * def urlAccion           = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud     = fabricaDatos.usuariosInvalidos.emailVacio
     * def resultadoEmailVacio = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -134,7 +134,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-009
   Scenario Outline: [NEGATIVO] Registrar usuario con campo <campo> vacio retorna error de validacion
 
-    * def urlAccion         = pantalla.urlRegistrarUsuario
+    * def urlAccion         = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud   = constructorCuerpo.cuerpoDesdeColumnas('<nombre>', '<email>', '<password>', '<administrador>')
     * def resultadoInvalido = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 
@@ -153,7 +153,7 @@ Feature: POST /usuarios - Registrar Nuevo Usuario
   @TC-POST-010
   Scenario: [NEGATIVO] Registrar usuario con body vacio retorna 400
 
-    * def urlAccion            = pantalla.urlRegistrarUsuario
+    * def urlAccion            = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud      = constructorCuerpo.cuerpoVacio()
     * def resultadoCuerpoVacio = call read('classpath:interactions/usuarios/registrarUsuario.feature@crudo')
 

@@ -1,4 +1,4 @@
-﻿# interactions/usuarios/obtenerListaUsuarios.feature
+# interactions/usuarios/obtenerListaUsuarios.feature
 # =============================================================================
 # Patron Screenplay - Capa de Logica de Negocio (Business Logic Layer)
 # Capa: INTERACTIONS

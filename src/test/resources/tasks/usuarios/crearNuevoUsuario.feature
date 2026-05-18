@@ -1,4 +1,4 @@
-﻿# tasks/usuarios/crearNuevoUsuario.feature
+# tasks/usuarios/crearNuevoUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa de Logica de Negocio (Business Logic Layer)
 # Capa: TASKS
@@ -25,7 +25,7 @@ Feature: [TASK] Crear Nuevo Usuario en el Sistema
   Scenario: Registrar usuario y exponer su ID para uso posterior
 
     # Preparar URL y cuerpo de la solicitud de registro
-    * def urlAccion       = pantalla.urlRegistrarUsuario
+    * def urlAccion       = pantalla.urlBaseUsuarios
     * def cuerpoSolicitud = datosDelNuevoUsuario
 
     # Ejecutar interaction atomica POST /usuarios

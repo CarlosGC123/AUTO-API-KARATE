@@ -1,4 +1,4 @@
-﻿# questions/verificarEsquemaListaUsuarios.feature
+# questions/verificarEsquemaListaUsuarios.feature
 # =============================================================================
 # Patron Screenplay - Capa de Logica de Negocio (Business Logic Layer)
 # Capa: QUESTIONS (PLANA - sin subdirectorios de modulo)

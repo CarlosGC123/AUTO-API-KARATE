@@ -1,4 +1,4 @@
-﻿# features/usuarios/crudUsuarioE2E.feature
+# features/usuarios/crudUsuarioE2E.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 # Flujo de Integracion End-to-End
@@ -26,7 +26,7 @@ Feature: CRUD Completo de Usuario - Flujo End-to-End
   Scenario: [E2E] Ciclo de vida completo de un usuario administrador
 
     # PASO 1: Health Check - verificar que el sistema responde correctamente
-    * def urlConsulta     = pantalla.urlListaUsuarios
+    * def urlConsulta     = pantalla.urlBaseUsuarios
     * def estadoInicial   = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
     * def cantidadInicial = estadoInicial.response.quantidade
     And  call read('classpath:questions/verificarEsquemaListaUsuarios.feature') { respuestaLista: '#(estadoInicial.response)' }
@@ -82,7 +82,7 @@ Feature: CRUD Completo de Usuario - Flujo End-to-End
     And  match resultadoPostDelete.response.message == mensajes.usuarioNaoEncontrado
 
     # PASO 10: Verificar que el contador volvio exactamente al estado inicial
-    * def urlConsulta = pantalla.urlListaUsuarios
+    * def urlConsulta = pantalla.urlBaseUsuarios
     * def estadoFinal = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
     And  match estadoFinal.response.quantidade == cantidadInicial
     * karate.log('[E2E] CICLO COMPLETO VERIFICADO EXITOSAMENTE')

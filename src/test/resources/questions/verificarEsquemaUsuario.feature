@@ -1,4 +1,4 @@
-﻿# questions/verificarEsquemaUsuario.feature
+# questions/verificarEsquemaUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa: QUESTIONS (PLANA)
 # Responsabilidad: verificar que un objeto de usuario cumple el contrato de

@@ -1,4 +1,4 @@
-﻿# tasks/usuarios/eliminarUsuarioExistente.feature
+# tasks/usuarios/eliminarUsuarioExistente.feature
 # =============================================================================
 # Patron Screenplay - Capa: TASKS
 # Responsabilidad: eliminar un usuario del sistema.

@@ -1,4 +1,4 @@
-﻿# interactions/usuarios/eliminarUsuario.feature
+# interactions/usuarios/eliminarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa: INTERACTIONS
 # Responsabilidad UNICA: encapsular DELETE /usuarios/{id}

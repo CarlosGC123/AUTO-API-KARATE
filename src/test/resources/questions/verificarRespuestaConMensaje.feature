@@ -1,4 +1,4 @@
-﻿# questions/verificarRespuestaConMensaje.feature
+# questions/verificarRespuestaConMensaje.feature
 # =============================================================================
 # Patron Screenplay - Capa: QUESTIONS (PLANA)
 # Responsabilidad: verificar que una respuesta operacional contiene el schema

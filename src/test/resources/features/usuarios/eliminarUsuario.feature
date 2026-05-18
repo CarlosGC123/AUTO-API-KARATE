@@ -1,4 +1,4 @@
-﻿# features/usuarios/eliminarUsuario.feature
+# features/usuarios/eliminarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 #
@@ -47,7 +47,7 @@ Feature: DELETE /usuarios/{id} - Eliminar Usuario
   @TC-DEL-003
   Scenario: [POSITIVO] La cantidad total de usuarios disminuye tras una eliminacion
 
-    * def urlConsulta    = pantalla.urlListaUsuarios
+    * def urlConsulta    = pantalla.urlBaseUsuarios
     * def resultadoAntes = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
     * def cantidadAntes  = resultadoAntes.response.quantidade
 

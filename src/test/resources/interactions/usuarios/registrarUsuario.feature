@@ -1,4 +1,4 @@
-﻿# interactions/usuarios/registrarUsuario.feature
+# interactions/usuarios/registrarUsuario.feature
 # =============================================================================
 # Patron Screenplay - Capa: INTERACTIONS
 # Responsabilidad UNICA: encapsular POST /usuarios

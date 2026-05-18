@@ -1,4 +1,4 @@
-﻿# features/usuarios/obtenerUsuarios.feature
+# features/usuarios/obtenerUsuarios.feature
 # =============================================================================
 # Patron Screenplay - Capa de Guiones de Prueba (Test Script Layer)
 #
@@ -24,7 +24,7 @@ Feature: GET /usuarios - Obtener Lista de Usuarios
   @smoke @TC-GET-001
   Scenario: [POSITIVO] Obtener la lista completa retorna 200 y cumple el esquema de contrato
 
-    * def urlConsulta    = pantalla.urlListaUsuarios
+    * def urlConsulta    = pantalla.urlBaseUsuarios
     * def resultadoLista = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
 
     Then match resultadoLista.responseStatus == 200
@@ -35,7 +35,7 @@ Feature: GET /usuarios - Obtener Lista de Usuarios
   @TC-GET-002
   Scenario: [POSITIVO] La cantidad declarada coincide con el tamano del arreglo de usuarios
 
-    * def urlConsulta       = pantalla.urlListaUsuarios
+    * def urlConsulta       = pantalla.urlBaseUsuarios
     * def resultadoLista    = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
     * def cantidadDeclarada = resultadoLista.response.quantidade
     * def tamanoArreglo     = resultadoLista.response.usuarios.length
@@ -47,7 +47,7 @@ Feature: GET /usuarios - Obtener Lista de Usuarios
   @TC-GET-003
   Scenario: [POSITIVO] Cada usuario en la lista posee todos los campos requeridos
 
-    * def urlConsulta     = pantalla.urlListaUsuarios
+    * def urlConsulta     = pantalla.urlBaseUsuarios
     * def resultadoLista  = call read('classpath:interactions/usuarios/obtenerListaUsuarios.feature@exitoso')
     * def listaDeUsuarios = resultadoLista.response.usuarios
 
@@ -106,7 +106,7 @@ Feature: GET /usuarios - Obtener Lista de Usuarios
   @TC-GET-007
   Scenario: [POSITIVO] La respuesta incluye el header Content-Type application/json
     # Llamada directa para acceder a responseHeaders dentro del escenario (no via call)
-    Given url pantalla.urlListaUsuarios
+    Given url pantalla.urlBaseUsuarios
     And   headers cabeceras
     When  method GET
     Then  status 200

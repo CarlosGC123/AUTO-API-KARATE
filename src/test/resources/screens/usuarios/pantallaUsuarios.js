@@ -1,9 +1,5 @@
-﻿function fn(configuracion) {
-    var base    = configuracion.urlBase;
-    var segment = '/usuarios';
+function fn(configuracion) {
     return {
-        urlListaUsuarios:    base + segment,
-        urlRegistrarUsuario: base + segment,
-        urlBaseUsuarios:     base + segment
+        urlBaseUsuarios: configuracion.urlBase + '/usuarios'
     };
 }

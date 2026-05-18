@@ -1,4 +1,4 @@
-﻿/**
+/**
  * utils/fabricaDatos.js
  * =============================================================================
  * Patron Screenplay - Capa de Librerias Base (Base Library Layer)

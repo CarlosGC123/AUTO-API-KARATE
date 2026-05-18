@@ -1,4 +1,4 @@
-﻿# interactions/usuarios/obtenerUsuarioPorId.feature
+# interactions/usuarios/obtenerUsuarioPorId.feature
 # =============================================================================
 # Patron Screenplay - Capa: INTERACTIONS
 # Responsabilidad UNICA: encapsular GET /usuarios/{id}

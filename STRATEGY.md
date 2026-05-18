@@ -5,7 +5,7 @@
 
 ## 1. Resumen Ejecutivo
 
-Este informe documenta la estrategia, arquitectura y patrones aplicados en la construcción del framework de automatización para la API de Usuarios de ServeRest, desarrollado como reto técnico para Senior QA Automation Engineer. El framework cubre el 100% de los criterios de aceptación definidos en la historia de usuario, con 39+ escenarios distribuidos entre casos positivos, negativos, y flujos de integración end-to-end.
+Este informe documenta la estrategia, arquitectura y patrones aplicados en la construcción del framework de automatización para la API de Usuarios de ServeRest, desarrollado como reto técnico. El framework cubre el 100% de los criterios de aceptación definidos en la historia de usuario, con 39+ escenarios distribuidos entre casos positivos, negativos, y flujos de integración end-to-end.
 
 ---
 
