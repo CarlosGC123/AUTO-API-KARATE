@@ -70,7 +70,7 @@
                         <karate.env>${karate.env}</karate.env>
                     </systemProperties>
                     <includes>
-                        <include>**/CorredorPruebas.java</include>
+                        <include>**/CucumberTestSuite.java</include>
                     </includes>
                     <forkCount>${threads}</forkCount>
                     <reuseForks>false</reuseForks>
